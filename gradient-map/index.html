@@ -12,6 +12,10 @@ i:hover,b:hover{background:rgba(255,255,255,0.3)}
 .i3{background-image:url(3.jpg)}
 .i4{background-image:url(4.jpg)}
 .i5{background-image:url(5.jpg)}
+.b0{background:-webkit-linear-gradient(to left,rgb(73,57,102),rgb(76,79,134)30%,rgb(188,167,174)70%,rgb(216,246,248));
+            background:linear-gradient(to left,rgb(73,57,102),rgb(76,79,134)30%,rgb(188,167,174)70%,rgb(216,246,248))}
+.b1{background:-webkit-linear-gradient(to left,#222,#eee);
+            background:linear-gradient(to left,#222,#eee)}
 #d{display:none}
 </style>
 
@@ -38,11 +42,11 @@ i:hover,b:hover{background:rgba(255,255,255,0.3)}
 
 <script>(function(){
 var gm=window.gm={},
-il=[],i=[],n=[0,1],
+il=[],i=[],n=[0,0],
 c=document.getElementById('c').getContext('2d'),
 d=document.getElementById('d').getContext('2d'),
 nl=[
-	[[0,0,0,0],[140,50,255,0.5],[140,176,255,1]],
+	[[73,57,102,0],[76,79,134,0.3],[188,167,174,0.7],[216,246,248,1]],
 	[[0,0,0,0],[200,200,100,0.5],[256,256,256,1]]
 ]
 gm.i=function(a,b){
