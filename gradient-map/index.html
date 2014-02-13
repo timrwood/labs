@@ -47,15 +47,17 @@ c=document.getElementById('c').getContext('2d'),
 d=document.getElementById('d').getContext('2d'),
 nl=[
 	[[73,57,102,0],[76,79,134,0.3],[188,167,174,0.7],[216,246,248,1]],
-	[[0,0,0,0],[200,200,100,0.5],[256,256,256,1]]
+	[[0,0,0,0],[256,256,256,1]],
+	[[0,0,0,0],[256,256,256,1]],
+	[[0,0,0,0],[256,256,256,1]],
+	[[0,0,0,0],[256,256,256,1]],
+	[[0,0,0,0],[256,256,256,1]]
 ]
 gm.i=function(a,b){
 	if (il[b])return i[a]=il[b],r()
 	var z=new Image();z.onload=function(){il[b]=z;gm.i(a,b)};z.src=b+'.jpg'
 };
-gm.b=function(a,b){
-	console.log('b', a, b)
-};
+gm.b=function(a,b){n[a]=b;r()};
 function m(p,o){
 	for(var i=0,v,j,q;i<p.length;i+=4){
 		v=(p[i]+p[i+1]+p[i+2])/768
