@@ -1,19 +1,12 @@
 <!doctype html>
-
 <style>
 html{background:#111}
 .w{position:fixed;top:50%;left:50%;width:600px;height:600px;margin:-300px 0 0 -300px;background:#eee}
 .l,.r{position:absolute;top:0;bottom:0;width:100px;background:#ddd}.r{right:-120px}.l{left:-120px}
 .i,.b{height:100px;background-size:100px 100px}
-i,b{width:50px;height:100px;float:left;display:block}
-i:hover,b:hover{background:rgba(255,255,255,0.3)}
-#d{display:none}
-.i0{background-image:url(0.jpg)}
-.i1{background-image:url(1.jpg)}
-.i2{background-image:url(2.jpg)}
-.i3{background-image:url(3.jpg)}
-.i4{background-image:url(4.jpg)}
-.i5{background-image:url(5.jpg)}
+i,b{width:50px;height:100px;float:left;display:block;position:relative}
+.true:after,i:hover:after,b:hover:after{content:"";position:absolute;top:0;left:0;right:0;bottom:0;border:1px solid rgba(0,0,0,0.5);background:rgba(0,0,0,0.3)}
+.i0{background-image:url(0.jpg)}.i1{background-image:url(1.jpg)}.i2{background-image:url(2.jpg)}.i3{background-image:url(3.jpg)}.i4{background-image:url(4.jpg)}.i5{background-image:url(5.jpg)}
 .b0{background:-webkit-linear-gradient(to left,rgb(73,57,102),rgb(76,79,134)30%,  rgb(188,167,174)70%,rgb(216,246,248));
             background:linear-gradient(to left,rgb(73,57,102),rgb(76,79,134)30%,  rgb(188,167,174)70%,rgb(216,246,248))}
 .b1{background:-webkit-linear-gradient(to left,rgb(49,35,44), rgb(137,69,66)30%,  rgb(184,172,120)70%,rgb(217,218,210));
@@ -29,82 +22,40 @@ i:hover,b:hover{background:rgba(255,255,255,0.3)}
 </style>
 <div class="w">
 <canvas id="c" width="600" height="600"></canvas>
-<canvas id="d" width="600" height="600"></canvas>
 <div class="l">
-<div class="i i0"><i onclick="gm.i(0, 0)"></i><i onclick="gm.i(1, 0)"></i></div>
-<div class="i i1"><i onclick="gm.i(0, 1)"></i><i onclick="gm.i(1, 1)"></i></div>
-<div class="i i2"><i onclick="gm.i(0, 2)"></i><i onclick="gm.i(1, 2)"></i></div>
-<div class="i i3"><i onclick="gm.i(0, 3)"></i><i onclick="gm.i(1, 3)"></i></div>
-<div class="i i4"><i onclick="gm.i(0, 4)"></i><i onclick="gm.i(1, 4)"></i></div>
-<div class="i i5"><i onclick="gm.i(0, 5)"></i><i onclick="gm.i(1, 5)"></i></div>
+<div class="i i0"><i onclick="gm.i(0,0)"></i><i onclick="gm.i(1,0)"></i></div>
+<div class="i i1"><i onclick="gm.i(0,1)"></i><i onclick="gm.i(1,1)"></i></div>
+<div class="i i2"><i onclick="gm.i(0,2)"></i><i onclick="gm.i(1,2)"></i></div>
+<div class="i i3"><i onclick="gm.i(0,3)"></i><i onclick="gm.i(1,3)"></i></div>
+<div class="i i4"><i onclick="gm.i(0,4)"></i><i onclick="gm.i(1,4)"></i></div>
+<div class="i i5"><i onclick="gm.i(0,5)"></i><i onclick="gm.i(1,5)"></i></div>
 </div>
 <div class="r">
-<div class="b b0"><b onclick="gm.b(0, 0)"></b><b onclick="gm.b(1, 0)"></b></div>
-<div class="b b1"><b onclick="gm.b(0, 1)"></b><b onclick="gm.b(1, 1)"></b></div>
-<div class="b b2"><b onclick="gm.b(0, 2)"></b><b onclick="gm.b(1, 2)"></b></div>
-<div class="b b3"><b onclick="gm.b(0, 3)"></b><b onclick="gm.b(1, 3)"></b></div>
-<div class="b b4"><b onclick="gm.b(0, 4)"></b><b onclick="gm.b(1, 4)"></b></div>
-<div class="b b5"><b onclick="gm.b(0, 5)"></b><b onclick="gm.b(1, 5)"></b></div>
+<div class="b b0"><b onclick="gm.b(0,0)"></b><b onclick="gm.b(1,0)"></b></div>
+<div class="b b1"><b onclick="gm.b(0,1)"></b><b onclick="gm.b(1,1)"></b></div>
+<div class="b b2"><b onclick="gm.b(0,2)"></b><b onclick="gm.b(1,2)"></b></div>
+<div class="b b3"><b onclick="gm.b(0,3)"></b><b onclick="gm.b(1,3)"></b></div>
+<div class="b b4"><b onclick="gm.b(0,4)"></b><b onclick="gm.b(1,4)"></b></div>
+<div class="b b5"><b onclick="gm.b(0,5)"></b><b onclick="gm.b(1,5)"></b></div>
 </div>
 </div>
-
 <script>(function(){
-var gm=window.gm={},
-il=[],i=[],n=[0,0],
+var gm=window.gm={},il=[],i=[],ix=[],n=[4,5],
+nl=[[[73,57,102,0],[76,79,134,0.3],  [188,167,174,0.7],[216,246,248,1]],
+	[[49,35,44,0], [137,69,66,0.3],  [184,172,120,0.7],[217,218,210,1]],
+	[[50,34,43,0], [109,107,69,0.3], [131,171,167,0.7],[220,230,207,1]],
+	[[13,47,67,0], [123,103,71,0.3], [185,170,128,0.7],[230,229,192,1]],
+	[[1,18,29,0],  [22,47,55,0.3],   [105,97,80,0.7],  [145,128,84,1]],
+	[[70,90,118,0],[131,151,165,0.3],[239,207,215,0.7],[252,246,248,1]]],
 c=document.getElementById('c').getContext('2d'),
-d=document.getElementById('d').getContext('2d'),
-nl=[
-	[[73,57,102,0],[76,79,134,0.3],[188,167,174,0.7],[216,246,248,1]],
-	[[49,35,44,0],[137,69,66,0.3],[184,172,120,0.7],[217,218,210,1]],
-	[[50,34,43,0],[109,107,69,0.3],[131,171,167,0.7],[220,230,207,1]],
-	[[13,47,67,0],[123,103,71,0.3],[185,170,128,0.7],[230,229,192,1]],
-	[[1,18,29,0],[22,47,55,0.3],[105,97,80,0.7],[145,128,84,1]],
-	[[70,90,118,0],[131,151,165,0.3],[239,207,215,0.7],[252,246,248,1]]
-]
-gm.i=function(a,b){
-	if (il[b])return i[a]=il[b],r()
-	var z=new Image();z.onload=function(){il[b]=z;gm.i(a,b)};z.src=b+'.jpg'
-};
+it=document.getElementsByTagName('i'),
+bt=document.getElementsByTagName('b')
+gm.i=function(a,b){if (il[b])return i[a]=il[b],ix[a]=b,r();var z=new Image();z.onload=function(){il[b]=z;gm.i(a,b)};z.src=b+'.jpg'};
 gm.b=function(a,b){n[a]=b;r()};
-function m(p,o){
-	for(var i=0,v,j,q;i<p.length;i+=4){
-		v=(p[i]+p[i+1]+p[i+2])/768
-		for(j=1;j<o.length;j++)if(o[j][3]>v)break
-		q=(v-o[j][3])/(o[j-1][3]-o[j][3])
-		p[i]=o[j-1][0]*q+o[j][0]*(1-q)
-		p[i+1]=o[j-1][1]*q+o[j][1]*(1-q)
-		p[i+2]=o[j-1][2]*q+o[j][2]*(1-q)
-	}
-}
-function u(p,g){
-	for(var i=0;i<p.length;i+=4){
-		p[i+3]=256-((g[i]+g[i+1]+g[i+2])/3)
-	}
-}
-function q(a,b){
-	for(var i=0,q,r;i<a.length;i+=4){
-		q=b[i+3]/256
-		r=1-q
-		a[i]=a[i]*q+b[i]*r
-		a[i+1]=a[i+1]*q+b[i+1]*r
-		a[i+2]=a[i+2]*q+b[i+2]*r
-	}
-}
-function r(){
-	if (!i[0]||!i[1])return
-	c.drawImage(i[0],0,0,600,600)
-	d.drawImage(i[1],0,0,600,600)
-	var cd=c.getImageData(0,0,600,600)
-	var ce=c.getImageData(0,0,600,600)
-	var dd=d.getImageData(0,0,600,600)
-	m(cd.data,nl[n[0]])
-	m(ce.data,nl[n[1]])
-	u(ce.data,dd.data)
-	q(cd.data,ce.data)
-	c.putImageData(cd,0,0)
-	d.putImageData(ce,0,0)
-	console.log('render', cd)
-}
-gm.i(0, 0);
-gm.i(1, 2);
+function m(p,o){for(var i=0,v,j,q;i<p.length;i+=4){v=(p[i]+p[i+1]+p[i+2])/768;for(j=1;j<o.length;j++)if(o[j][3]>v)break;q=(v-o[j][3])/(o[j-1][3]-o[j][3]);p[i]=o[j-1][0]*q+o[j][0]*(1-q);p[i+1]=o[j-1][1]*q+o[j][1]*(1-q);p[i+2]=o[j-1][2]*q+o[j][2]*(1-q)}}
+function u(p,g){for(var i=0;i<p.length;i+=4)p[i+3]=256-((g[i]+g[i+1]+g[i+2])/3)}
+function q(a,b){for(var i=0,q,r;i<a.length;i+=4)q=b[i+3]/256,r=1-q,a[i]=a[i]*q+b[i]*r,a[i+1]=a[i+1]*q+b[i+1]*r,a[i+2]=a[i+2]*q+b[i+2]*r}
+function x(){for(var i=0,q,r,c='className';i<6;i++)it[i*2][c]=i==ix[0]||'',it[i*2+1][c]=i==ix[1]||'',bt[i*2][c]=i==n[0]||'',bt[i*2+1][c]=i==n[1]||''}
+function r(){if (!i[0]||!i[1])return;var W=c.getImageData.bind(c,0,0,600,600),Y=c.drawImage.bind(c);Y(i[0],0,0,600,600);var cd=W(),ce=W();Y(i[1],0,0,600,600);var dd=W();m(cd.data,nl[n[0]]);m(ce.data,nl[n[1]]);u(ce.data,dd.data);q(cd.data,ce.data);c.putImageData(cd,0,0);x()}
+gm.i(0,0);gm.i(1,5);
 }())</script>
