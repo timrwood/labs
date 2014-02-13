@@ -1,24 +1,32 @@
 <!doctype html>
 
 <style>
+html{background:#111}
 .w{position:fixed;top:50%;left:50%;width:600px;height:600px;margin:-300px 0 0 -300px;background:#eee}
-.l,.r{position:absolute;top:0;bottom:0;width:100px;background:#ddd}.r{right:-100px}.l{left:-100px}
+.l,.r{position:absolute;top:0;bottom:0;width:100px;background:#ddd}.r{right:-120px}.l{left:-120px}
 .i,.b{height:100px;background-size:100px 100px}
 i,b{width:50px;height:100px;float:left;display:block}
 i:hover,b:hover{background:rgba(255,255,255,0.3)}
+#d{display:none}
 .i0{background-image:url(0.jpg)}
 .i1{background-image:url(1.jpg)}
 .i2{background-image:url(2.jpg)}
 .i3{background-image:url(3.jpg)}
 .i4{background-image:url(4.jpg)}
 .i5{background-image:url(5.jpg)}
-.b0{background:-webkit-linear-gradient(to left,rgb(73,57,102),rgb(76,79,134)30%,rgb(188,167,174)70%,rgb(216,246,248));
-            background:linear-gradient(to left,rgb(73,57,102),rgb(76,79,134)30%,rgb(188,167,174)70%,rgb(216,246,248))}
-.b1{background:-webkit-linear-gradient(to left,#222,#eee);
-            background:linear-gradient(to left,#222,#eee)}
-#d{display:none}
+.b0{background:-webkit-linear-gradient(to left,rgb(73,57,102),rgb(76,79,134)30%,  rgb(188,167,174)70%,rgb(216,246,248));
+            background:linear-gradient(to left,rgb(73,57,102),rgb(76,79,134)30%,  rgb(188,167,174)70%,rgb(216,246,248))}
+.b1{background:-webkit-linear-gradient(to left,rgb(49,35,44), rgb(137,69,66)30%,  rgb(184,172,120)70%,rgb(217,218,210));
+            background:linear-gradient(to left,rgb(49,35,44), rgb(137,69,66)30%,  rgb(184,172,120)70%,rgb(217,218,210))}
+.b2{background:-webkit-linear-gradient(to left,rgb(50,34,43), rgb(109,107,69)30%, rgb(131,171,167)70%,rgb(220,230,207));
+            background:linear-gradient(to left,rgb(50,34,43), rgb(109,107,69)30%, rgb(131,171,167)70%,rgb(220,230,207))}
+.b3{background:-webkit-linear-gradient(to left,rgb(13,47,67), rgb(123,103,71)30%, rgb(185,170,128)70%,rgb(230,229,192));
+            background:linear-gradient(to left,rgb(13,47,67), rgb(123,103,71)30%, rgb(185,170,128)70%,rgb(230,229,192))}
+.b4{background:-webkit-linear-gradient(to left,rgb(1,18,29),  rgb(22,47,55)30%,   rgb(105,97,80)70%,  rgb(145,128,84));
+            background:linear-gradient(to left,rgb(1,18,29),  rgb(22,47,55)30%,   rgb(105,97,80)70%,  rgb(145,128,84))}
+.b5{background:-webkit-linear-gradient(to left,rgb(70,90,118),rgb(131,151,165)30%,rgb(239,207,215)70%,rgb(252,246,248));
+            background:linear-gradient(to left,rgb(70,90,118),rgb(131,151,165)30%,rgb(239,207,215)70%,rgb(252,246,248))}
 </style>
-
 <div class="w">
 <canvas id="c" width="600" height="600"></canvas>
 <canvas id="d" width="600" height="600"></canvas>
@@ -47,11 +55,11 @@ c=document.getElementById('c').getContext('2d'),
 d=document.getElementById('d').getContext('2d'),
 nl=[
 	[[73,57,102,0],[76,79,134,0.3],[188,167,174,0.7],[216,246,248,1]],
-	[[0,0,0,0],[256,256,256,1]],
-	[[0,0,0,0],[256,256,256,1]],
-	[[0,0,0,0],[256,256,256,1]],
-	[[0,0,0,0],[256,256,256,1]],
-	[[0,0,0,0],[256,256,256,1]]
+	[[49,35,44,0],[137,69,66,0.3],[184,172,120,0.7],[217,218,210,1]],
+	[[50,34,43,0],[109,107,69,0.3],[131,171,167,0.7],[220,230,207,1]],
+	[[13,47,67,0],[123,103,71,0.3],[185,170,128,0.7],[230,229,192,1]],
+	[[1,18,29,0],[22,47,55,0.3],[105,97,80,0.7],[145,128,84,1]],
+	[[70,90,118,0],[131,151,165,0.3],[239,207,215,0.7],[252,246,248,1]]
 ]
 gm.i=function(a,b){
 	if (il[b])return i[a]=il[b],r()
